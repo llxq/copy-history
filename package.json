@@ -1,0 +1,12 @@
+{
+  "name": "copy-history",
+  "version": "1.0.0",
+  "description": "This is an electron app that records history",
+  "main": "index.js",
+  "scripts": {
+    "dev": "pnpm dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
