@@ -1,0 +1,5 @@
+{
+    "name": "copy-history",
+    "description": "This is an electron app that records history",
+    "main": "background.js"
+}
