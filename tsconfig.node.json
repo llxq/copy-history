@@ -10,5 +10,5 @@
     "noEmit": true,
     "types": ["vite/client"]
   },
-  "include": ["vite.config.ts", "plugins/**/*", "electron/**/*", "typings/**/*.d.ts"],
+  "include": ["vite.config.ts", "plugins/**/*", "electron/**/*", "typings/**/*.d.ts", "share/**/*"],
 }

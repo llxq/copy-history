@@ -1,5 +1,4 @@
-const abc = () => {
-    return 123
-}
+import { contextBridge } from 'electron'
+import { IpcRendererProvider } from './ipc'
 
-abc()
+contextBridge.exposeInMainWorld('IpcRenderer', IpcRendererProvider)

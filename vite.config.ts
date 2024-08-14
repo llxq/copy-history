@@ -1,4 +1,5 @@
 import react from '@vitejs/plugin-react'
+import { join } from 'path'
 import type { Plugin, PluginOption } from 'vite'
 import { defineConfig } from 'vite'
 import { DevElectronBuild } from './plugins/electron-build.dev'
@@ -14,6 +15,12 @@ if (process.env.NODE_ENV === 'production') {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins,
-  base: './'
+    plugins,
+    base: './',
+    resolve: {
+        alias: {
+            '@': join(__dirname, 'src'),
+            '@share': join(__dirname, 'share'),
+        }
+    },
 })

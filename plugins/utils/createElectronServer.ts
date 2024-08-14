@@ -12,10 +12,32 @@ const getJson = (path: string) => JSON.parse(readFileSync(resolve(path), 'utf-8'
 /* 创建一个 electron 开发服务 */
 export const createElectronDevServer = (address: string): void => {
     const createServer = () => {
-        return spawn('electron', ['dist/background.js', address], {
+        const app = spawn('electron', ['dist/background.js', address], {
             cwd: process.cwd(),
             stdio: 'inherit',
         })
+
+        // 监听 stdout 输出
+        app.stdout?.on('data', (data) => {
+            console.log(`stdout: ${ data.toString() }`)
+        })
+
+        // 监听 stderr 输出
+        app.stderr?.on('data', (data) => {
+            console.error(`stderr: ${ data.toString() }`)
+        })
+
+        // 监听子进程退出事件
+        app.on('exit', (code) => {
+            console.log(`子进程退出，退出码: ${ code }`)
+        })
+
+        // 监听错误事件
+        app.on('error', (err) => {
+            console.error(`子进程启动失败: ${ err }`)
+        })
+
+        return app
     }
 
     /* 启动一个 electron 服务 */
@@ -34,10 +56,6 @@ export const createElectronDevServer = (address: string): void => {
         app.kill()
         buildElectronEntry()
         app = createServer()
-    })
-
-    app.stderr?.on('data', data => {
-        console.log(data.tostring())
     })
 }
 

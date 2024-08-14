@@ -1,7 +1,7 @@
 import type { BrowserWindowConstructorOptions } from 'electron'
 
 export const styleConfig: Partial<BrowserWindowConstructorOptions> = {
-    width: 800,
+    width: 1000,
     height: 600
 }
 

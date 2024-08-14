@@ -21,7 +21,11 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+        "@/*": ["./src/*"],
+        "@share/*": ["./share/*"],
+    }
   },
-  "include": ["src", "vite.config.ts", "electron/**/*.ts", "typings/**/*.d.ts", "plugins/**/*"],
+  "include": ["src", "vite.config.ts", "electron/**/*.ts", "typings/**/*.d.ts", "plugins/**/*", "typings/route.ts", "share/**/*"],
 }
